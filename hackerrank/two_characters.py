@@ -3,9 +3,7 @@
 s = 'abaacdabd'
 
 unique = set(s)
-
 unique_list = list(unique)
-
 pairs = []
 
 for j in range(len(unique_list)):

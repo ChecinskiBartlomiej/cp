@@ -1,15 +1,20 @@
-nums = [1,2,3,4,5]
+#https://leetcode.com/problems/subsets/
 
-subsets = []
-subsets.append([])
-for j in range(len(nums)):
-    new_subsets = []
-    for s in subsets:
-        t = list(s)
-        t.append(nums[j])
-        new_subsets.append(t)
-    for s in new_subsets:
-        subsets.append(s)
+class Solution:
+    def subsets(self, nums: list[int]) -> list[list[int]]:
+        result=[]
+        current=[]
+        def backtracking(i):
+            if i==len(nums):
+                result.append(current.copy())
+                return
 
-print(subsets)
-print(len(subsets))
+            backtracking(i+1)
+
+            current.append(nums[i])
+            backtracking(i+1)
+
+            current.pop()
+        
+        backtracking(0)
+        return result
